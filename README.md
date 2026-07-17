@@ -1,4 +1,4 @@
-# HiMVH: Hierarchical Multi-level Feature Learning Framework for Efficient Video Hashing
+# TPHash: Topology-Preserving Self-Supervised Video Hashing via Quantization Topology Distillation
 
 ![](figure/model.png)
 
@@ -14,26 +14,26 @@
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/anon271/HiMVH
-cd HiMVH
+git clone https://github.com/anon271/TPHash
+cd TPHash
 ```
 
 ### 2. Environment Setup
 ```bash
-conda create -n HiMVH python=3.10.13
-conda activate HiMVH
+conda create -n TPHash python=3.10.13
+conda activate TPHash
 conda install pytorch==2.1.1 pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install -r requirements.txt
 ```
 
 ### 3. Download Datasets
-VGG feature of FCVID is kindly provided by the authors of [SSVH]. ResNet50 features of ActivityNet are provided by the authors of [BTH]. You can download these datasets from Baidu disk:
+Clip feature of FCVID and ActivityNet are provided by the authors of [AVHash]. You can download these datasets from Baidu disk:
 
 | Dataset | Link |
 |---------|------|
-| FCVID | [Baidu disk](https://pan.baidu.com/s/1v0qo4PtiZgFB9iLmj3sJIg?pwd=0000) |
-| ActivityNet | [Baidu disk](https://pan.baidu.com/s/1cDJ0-6T2-AOeLgp5rBihfA?pwd=0000) |
-| UCF101 | [Baidu disk](https://pan.baidu.com/s/1jpqcRRFdiemGvlPpukxJ6Q?pwd=0000) |
+| FCVID | [Baidu disk](https://pan.baidu.com/s/1xlViGrhOQ8Jrwgn0UEtukg?pwd=snw3) |
+| ActivityNet | [Baidu disk](https://pan.baidu.com/s/1d9B8p-1oVNRy88Xgo5somw?pwd=6ji8) |
+| UCF101 | [Baidu disk](https://pan.baidu.com/s/13M0t-ttdE_GRh4jApfrrsw?pwd=qhb9) |
 
 ### 4. Configure Dataset Paths
 Modify the dataset paths in the corresponding JSON files:
@@ -43,7 +43,7 @@ Modify the dataset paths in the corresponding JSON files:
 
 ## Training
 
-### Training HiMVH:
+### Training TPHash:
 
 1. Modify parameters in `run.py`:
    - `data_set_config`: Path to dataset JSON file
@@ -72,7 +72,7 @@ python run.py
 
 ## Testing
 
-### Testing WSCH:
+### Testing TPHash:
 
 1. Modify `run.py`:
    - Change `from train import train_model` to `from test import train_model`
@@ -85,7 +85,7 @@ python run.py
 
 ## Trained Models
 
-Trained HiMVH checkpoints are available for download from: [Baidu disk](https://pan.baidu.com/s/1qdCe6eZQR6ijhen_MbDbUg?pwd=mfok#list/path=%2F) .
+Trained TPHash checkpoints are available for download from: [Baidu disk](https://pan.baidu.com/s/1qdCe6eZQR6ijhen_MbDbUg?pwd=mfok#list/path=%2F) .
 
 ## Results
 
@@ -93,19 +93,16 @@ For this repository, the expected performance is:
 
 | *Dataset* | *Bits* | *mAP@5* | *mAP@20* | *mAP@40* | *mAP@60* | *mAP@80* | *mAP@100* |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| FCVID | 32 | 0.492 | 0.361 | 0.323 | 0.303 | 0.287 | 0.273 |
-| FCVID | 64 | 0.558 | 0.424 | 0.384 | 0.362 | 0.345 | 0.328 |
-| FCVID | 128 | 0.578 | 0.448 | 0.409 | 0.387 | 0.368 | 0.351 |
-| Act-Net | 32 | 0.311 | 0.195 | 0.120 | 0.085 | 0.066 | 0.053 |
-| Act-Net | 64 | 0.378 | 0.242 | 0.146 | 0.102 | 0.078 | 0.063 |
-| Act-Net | 128 | 0.386 | 0.253 | 0.151 | 0.106 | 0.081 | 0.065 |
-| YFCC | 32 | 0.176 | 0.103 | 0.086 | 0.079 | 0.076 | 0.073 | 
-| YFCC | 64 | 0.187 | 0.108 | 0.090 | 0.083 | 0.080 | 0.077 |
-| YFCC | 128 | 0.192 | 0.111 | 0.093 | 0.086 | 0.081 | 0.079 | 
+| FCVID | 16 | 0.492 | 0.361 | 0.323 | 0.303 | 0.287 | 0.273 |
+| FCVID | 32 | 0.558 | 0.424 | 0.384 | 0.362 | 0.345 | 0.328 |
+| FCVID | 64 | 0.578 | 0.448 | 0.409 | 0.387 | 0.368 | 0.351 |
+| Act-Net | 16 | 0.311 | 0.265 | 0.220 | 0.185 | 0.166 | 0.143 |
+| Act-Net | 32 | 0.378 | 0.342 | 0.246 | 0.202 | 0.178 | 0.153 |
+| Act-Net | 64 | 0.386 | 0.353 | 0.251 | 0.206 | 0.181 | 0.165 |
+| UCF101 | 16 | 0.576 | 0.503 | 0.486 | 0.379 | 0.276 | 0.173 |
+| YFCC | 32 | 0.687 | 0.608 | 0.590 | 0.483 | 0.380 | 0.277 |
+| YFCC | 64 | 0.792 | 0.711 | 0.693 | 0.586 | 0.481 | 0.379 |
 
 
-[SSVH]:https://github.com/lixiangpengcs/Self-Supervised-Video-Hashing
-
-[BTH]:https://github.com/Lily1994/BTH
-
+[AVHash]:https://github.com/iFamilyi/AVHash
 
