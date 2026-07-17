@@ -2,7 +2,7 @@
   "dataset": "fcvid",
   "Image": "",
   "Audio": "",
-  "num_class": 239,
+  "num_class": 101,
   "train_list": "",
   "val_list": "",
   "test_list": "",

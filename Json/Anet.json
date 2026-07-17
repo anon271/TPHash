@@ -1,12 +1,10 @@
 {
-  "dataset": "activitynet",
-  "train": "./train_feats.h5",
-  "train_label": "",
-  "test": "./test_feats.h5",
-  "test_label": "./re_label.mat",
-  "query": "./query_feats.h5",
-  "query_label": "./q_label.mat",
+  "dataset": "actnet",
+  "Image": "/mnt/disk1/MMVH/act/act_vit.h5",
+  "Audio": "/mnt/disk1/MMVH/act/AST_act.h5",
   "num_class": 200,
-  "hidden_size": 2048,
-  "max_frames": 30
+  "train_list": "/home/sunzhe/Vmamba/act_trains/",
+  "val_list": "/home/sunzhe/Vmamba/act_vals/",
+  "test_list": "/home/sunzhe/Vmamba/act_tests/",
+  "retrieval_list": "/home/sunzhe/Vmamba/act_trains/"
 }
