@@ -27,7 +27,7 @@ pip install -r requirements.txt
 ```
 
 ### 3. Download Datasets
-Clip feature of FCVID and ActivityNet are provided by the authors of [AVHash]. You can download these datasets from Baidu disk:
+Clip feature of FCVID and ActivityNet are provided by the authors of [AVHash]. The UCF101 features were processed under the same standards. You can download these datasets from Baidu disk.:
 
 | Dataset | Link |
 |---------|------|
